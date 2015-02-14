@@ -19,6 +19,13 @@
       <type>pom</type>
       <scope>provided</scope>
     </dependency>
+    
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.6</version>
+		</dependency>
+    
   </dependencies>
   <profiles>
     <profile>
@@ -27,6 +34,7 @@
      <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
      <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
      <id>openshift</id>
+     	
      <build>
         <finalName>veleta</finalName>
         <plugins>
