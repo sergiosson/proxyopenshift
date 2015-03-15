@@ -46,7 +46,7 @@ public class Util {
 	public static String convertApi(String xml) {
 		
 	
-		String template = "<data><current_condition><windspeedKmph>##windspeedKmph</windspeedKmph><windspeedMiles>##windspeedMiles</windspeedMiles><winddirDegree>##winddirDegree</winddirDegree></current_condition>"
+		String template = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><current_condition><windspeedKmph>##windspeedKmph</windspeedKmph><windspeedMiles>##windspeedMiles</windspeedMiles><winddirDegree>##winddirDegree</winddirDegree></current_condition>"
 +"<nearest_area><areaName>##areaName</areaName><country>##country</country><region>##region</region></nearest_area><provider>##provider</provider></data>";
 			XPathFactory factory = XPathFactory.newInstance();
 			XPath xPath = factory.newXPath();
