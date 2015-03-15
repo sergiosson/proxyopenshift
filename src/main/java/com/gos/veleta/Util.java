@@ -88,6 +88,9 @@ public class Util {
 				String xpath = maps[i][1];
 				
 				String value = getFirstTag(xpath, document, xPath);
+				if(tag.equals("windspeedKmph") || tag.equals("windspeedMiles") || tag.equals("winddirDegree")){
+					value = Double.valueOf(value).intValue()+"";
+				}
 				template = template.replace("##"+tag, value);
 			}
 			
