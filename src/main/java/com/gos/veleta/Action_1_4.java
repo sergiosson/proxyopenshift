@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Action_1_4 {
 
 	static Random ran = new Random();
-	private static final String weatherURl = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
+	private static final String weatherURl2 = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
 			+ "?fx=no"
 			+ "&includeLocation=yes"
 			+ "&show_comments=no"
@@ -20,6 +20,9 @@ public class Action_1_4 {
 			+ "&key=ee0c108d51c15e501093ca29f58a32d2116790ab"
 			+ "&q=";
 
+	private static final String weatherURl = "http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/";
+
+	
 	public static void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 		String ipAddress = req.getRemoteAddr();
@@ -37,7 +40,8 @@ public class Action_1_4 {
 			if (ran.nextBoolean() && ran.nextBoolean() && ran.nextBoolean()) {
 				xml = getUpdateYourAppXml();
 			} else {
-				xml = Util.getResponseFromWeatherApi(weatherURl + ipAddress);
+				xml = Util.getResponseFromWeatherApi(weatherURl + "autoip.json?geo_ip="+ipAddress);
+				xml = Util.convertApi(xml);
 			}
 		} else {
 			xml = getUpdateYourAppXml();

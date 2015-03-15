@@ -9,13 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class Action_1_5 {
-	private static final String weatherURl = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
+	private static final String weatherURl2 = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
 			+ "?fx=no"
 			+ "&includeLocation=yes"
 			+ "&show_comments=no"
 			+ "&format=xml"
 			+ "&key=ee0c108d51c15e501093ca29f58a32d2116790ab"
 			+ "&q=";
+	
+	private static final String weatherURl = "http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/";
+	
+	
 
 	public static void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
@@ -33,7 +37,8 @@ public class Action_1_5 {
 				String lon = req.getParameter("lon");
 
 				xml = Util.getResponseFromWeatherApi(weatherURl + lat + ","
-						+ lon);
+						+ lon+".xml");
+				xml = Util.convertApi(xml);
 
 			} else if (byName instanceof Inet6Address) {
 
