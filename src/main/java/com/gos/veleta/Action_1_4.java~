@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Action_1_4 {
 
 	static Random ran = new Random();
-	private static final String weatherURl = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
+	private static final String weatherURl = "http://api.worldweatheronline.com/free/v2/weather.ashx"
 			+ "?fx=no"
 			+ "&includeLocation=yes"
 			+ "&show_comments=no"
