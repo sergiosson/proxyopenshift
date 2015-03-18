@@ -110,7 +110,7 @@ public class Util {
 				
 				template = template.replace("##"+tag, value);
 			}
-			template.replace("Rabassa", "Oscar e un mamonasso, ");
+			template = template.replace("Rabassa", "Oscar e un mamonasso, ");
 			template = template.replace("##provider","wunderground.com");
 			
 			return template;
