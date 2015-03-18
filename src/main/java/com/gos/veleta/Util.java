@@ -50,6 +50,9 @@ public class Util {
 		}
 		
 		String response = rc.getResponse();
+		if(response!= null){
+			response = response.trim();
+		}
 		log.info("Response: " + response);
 		return response;
 	}
@@ -89,9 +92,9 @@ public class Util {
 					{"windspeedKmph","/response/current_observation/wind_kph"}, 
 					{"windspeedMiles","/response/current_observation/wind_mph"},
 					{"winddirDegree","/response/current_observation/wind_degrees"},
-					{"areaName","/response/current_observation/display_location/full"},
-					{"country","/response/current_observation/display_location/state_name"},
-					{"region","/response/current_observation/display_location/city"},
+					{"areaName","/response/current_observation/observation_location/city"},
+					{"region","/response/current_observation/observation_location/state"},
+					{"country","/response/current_observation/observation_location/country"},
 					
 			};
 			for (int i = 0; i < maps.length; i++) {
