@@ -36,11 +36,11 @@ public class ProxyServlet extends HttpServlet {
 		try {
 			
 			String msg = "time:"+ new Date()+
-					"v:"+ req.getParameter("v")+
-					"token" + req.getParameter("token") +
-					"lat" + req.getParameter("lat") +
-					"lon" + req.getParameter("lon") +
-					"ip:" + req.getRemoteAddr() ;
+					" v:"+ req.getParameter("v")+
+					" token:" + req.getParameter("token") +
+					" lat:" + req.getParameter("lat") +
+					" lon:" + req.getParameter("lon") +
+					" ip:" + req.getRemoteAddr() ;
 			log.info(msg);
 
 		} catch (Exception e) {

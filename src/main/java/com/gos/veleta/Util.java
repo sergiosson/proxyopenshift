@@ -11,6 +11,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.apache.commons.codec.binary.StringUtils;
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -31,16 +33,24 @@ public class Util {
 	private static final String TAG_PROVIDER = "/data/provider";
 	private static final String TAG_ERROR = "/veleta/error/message";
 
+	static Logger log = Logger.getLogger(Util.class);
+
+	
 	public static String getResponseFromWeatherApi(String url)
 			throws ServletException {
+		log.info("Calling URL " + url);
 		RestClient rc = new RestClient(url);
 
 		try {
 			rc.executeRequest();
 		} catch (ErrorInfo e) {
+			log.error(e);
 			throw new ServletException("Error getting info from weather api");
 		}
-		return rc.getResponse();
+		
+		String response = rc.getResponse();
+		log.info("Response: " + response);
+		return response;
 	}
 
 	public static String convertApi(String xml) {
@@ -89,7 +99,9 @@ public class Util {
 				
 				String value = getFirstTag(xpath, document, xPath);
 				if(tag.equals("windspeedKmph") || tag.equals("windspeedMiles") || tag.equals("winddirDegree")){
-					value = Double.valueOf(value).intValue()+"";
+					if(value!= null && value.length()>0){
+						value = Double.valueOf(value).intValue()+"";
+					}
 				}
 				template = template.replace("##"+tag, value);
 			}
