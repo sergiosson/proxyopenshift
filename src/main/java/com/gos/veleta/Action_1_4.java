@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class Action_1_4 {
 
 	static Random ran = new Random();
@@ -21,6 +23,9 @@ public class Action_1_4 {
 			+ "&q=";
 
 	private static final String weatherURl = "http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/";
+
+	
+	static Logger log = Logger.getLogger(Action_1_4.class);
 
 	
 	public static void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -40,13 +45,14 @@ public class Action_1_4 {
 			if (ran.nextBoolean() && ran.nextBoolean() && ran.nextBoolean()) {
 				xml = getUpdateYourAppXml();
 			} else {
-				xml = Util.getResponseFromWeatherApi(weatherURl + "autoip.json?geo_ip="+ipAddress);
+				xml = Util.getResponseFromWeatherApi(weatherURl + "autoip.xml?geo_ip="+ipAddress);
 				xml = Util.convertApi(xml);
 			}
 		} else {
 			xml = getUpdateYourAppXml();
 		}
 		resp.setContentType("text/xml");
+		log.info("response: " + xml);
 		resp.getWriter().println(xml);
 		resp.getWriter().flush();
 

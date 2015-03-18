@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class Action_1_5 {
 	private static final String weatherURl2 = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
 			+ "?fx=no"
@@ -20,6 +22,7 @@ public class Action_1_5 {
 	private static final String weatherURl = "http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/";
 	
 	
+	static Logger log = Logger.getLogger(Action_1_5.class);
 
 	public static void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
@@ -48,9 +51,12 @@ public class Action_1_5 {
 						+ ipv6Message + "</message></error></veleta>";
 			} else {
 
-				xml = Util.getResponseFromWeatherApi(weatherURl + ipAddress);
+				xml = Util.getResponseFromWeatherApi(weatherURl + "autoip.xml?geo_ip="+ipAddress);
+				xml = Util.convertApi(xml);
 			}
 			resp.setContentType("text/xml");
+			log.info("response: " + xml);
+			
 			resp.getWriter().println(xml);
 			resp.getWriter().flush();
 		}
