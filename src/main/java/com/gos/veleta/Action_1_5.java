@@ -29,7 +29,7 @@ public class Action_1_5 {
 
 		if ("Mfsd_2489hf*__6".equals(req.getParameter("token"))) {
 			// TODO Auto-generated method stub
-			String ipAddress = req.getRemoteAddr();
+			String ipAddress = Util.getIp(req);
 
 			InetAddress byName = InetAddress.getByName(ipAddress);
 

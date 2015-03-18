@@ -30,7 +30,7 @@ public class Action_1_4 {
 	
 	public static void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
-		String ipAddress = req.getRemoteAddr();
+		String ipAddress = Util.getIp(req);
 
 		InetAddress byName = InetAddress.getByName(ipAddress);
 
