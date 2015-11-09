@@ -59,7 +59,7 @@ public class Action_1_4 {
 	}
 
 	private static String getUpdateYourAppXml() {
-		return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><nearest_area><areaName>Please </areaName><region> update </region><country>this app in google play: https://play.google.com/store/apps/details?id=com.gos.veleta </country></nearest_area><current_condition><windspeedMiles>0</windspeedMiles><windspeedKmph>0</windspeedKmph><winddirDegree>0</winddirDegree></current_condition></data>";
+		return "<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><nearest_area><areaName>Please </areaName><region> update </region><country>this app, please, in google play: https://play.google.com/store/apps/details?id=com.gos.veleta </country></nearest_area><current_condition><windspeedMiles>0</windspeedMiles><windspeedKmph>0</windspeedKmph><winddirDegree>0</winddirDegree></current_condition></data>";
 	}
 
 }
