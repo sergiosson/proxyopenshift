@@ -2,6 +2,8 @@ package com.gos.veleta;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -36,9 +38,16 @@ public class Util {
 
 	static Logger log = Logger.getLogger(Util.class);
 
+	Map<String, String> cacheMap = new HashMap<String, String>();
 	
 	public static String getResponseFromWeatherApi(String url)
 			throws ServletException {
+		
+		String response = Cache.get(url);
+		if(response != null){
+			return response;
+		}
+		
 		log.info("Calling URL " + url);
 		RestClient rc = new RestClient(url);
 
@@ -49,11 +58,12 @@ public class Util {
 			throw new ServletException("Error getting info from weather api");
 		}
 		
-		String response = rc.getResponse();
+		response = rc.getResponse();
 		if(response!= null){
 			response = response.trim();
 		}
 		log.info("Response: " + response);
+		Cache.put(url,response);
 		return response;
 	}
 
