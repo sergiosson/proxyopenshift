@@ -55,7 +55,6 @@ public class Action_1_5 {
 				xml = Util.convertApi(xml);
 			}
 			resp.setContentType("text/xml");
-			log.info("response: " + xml);
 			
 			resp.getWriter().println(xml);
 			resp.getWriter().flush();

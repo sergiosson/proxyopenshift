@@ -9,6 +9,12 @@ import org.apache.log4j.Logger;
 
 public class Cache {
 	
+	static int kRequests;
+	static int kfoundInCache;
+	static int kNotFoundInCache;
+	
+	
+	
 	static long MINUTE = 1000 * 60;
 	static long MAX_TIME = 5 * MINUTE;
 
@@ -58,15 +64,18 @@ public class Cache {
 	public static String get(String key) {
 		
 		synchronized (map) {
-		
+			kRequests++;
 			CacheElement cacheElement = map.get(key);
 			
 			if(cacheElement == null) {
+				kNotFoundInCache++;
 				return null;
 			} else if(isExpired(cacheElement)){
+				kNotFoundInCache++;
 				map.remove(key);
 				return null;
 			} else {
+				kfoundInCache++;
 				return cacheElement.value;
 			}
 		}
