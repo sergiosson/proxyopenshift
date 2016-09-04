@@ -1,0 +1,10 @@
+2016-09-01 21:05:25 INFO  Util:47 - 1:0+1
+2016-09-01 21:05:25 INFO  Util:52 - Calling URL http://api.openweathermap.org/data/2.5/weather?q&mode=xml&APPID=d7c567102323e6d813dd9cb06d7a2408&lat=38.738838&lon=-9.124308
+2016-09-01 21:06:00 INFO  Util:47 - 1:0+1
+2016-09-01 21:06:00 INFO  Util:52 - Calling URL http://api.openweathermap.org/data/2.5/weather?q&mode=xml&APPID=d7c567102323e6d813dd9cb06d7a2408&lat=38.738838&lon=-9.124308
+2016-09-01 21:06:01 INFO  Util:47 - 2:0+2
+2016-09-01 21:06:01 INFO  Util:52 - Calling URL http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/38.738838,-9.124308.xml
+2016-09-01 21:16:17 INFO  Util:47 - 1:0+1
+2016-09-01 21:16:17 INFO  Util:52 - Calling URL http://api.openweathermap.org/data/2.5/weather?q&mode=xml&APPID=d7c567102323e6d813dd9cb06d7a2408&lat=38.738838&lon=-9.124308
+2016-09-01 21:16:17 INFO  Util:47 - 2:0+2
+2016-09-01 21:16:17 INFO  Util:52 - Calling URL http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/38.738838,-9.124308.xml

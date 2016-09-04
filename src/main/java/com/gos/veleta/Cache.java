@@ -16,7 +16,7 @@ public class Cache {
 	
 	
 	static long MINUTE = 1000 * 60;
-	static long MAX_TIME = 5 * MINUTE;
+	static long MAX_TIME = 10 * MINUTE;
 
 	static long CLEAN_TIME = 30 * MINUTE;
 	

@@ -39,16 +39,18 @@ public class Action_1_4 {
 			String ipv6Message = "Since you use IPV6, what is good, you need to update this application from Google Play. For questions contact info@haveanapp.com";
 			xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><veleta><error><message>"
 					+ ipv6Message + "</message></error></veleta>";
-
+			log.info("Action_1_4 1");
 		} else if ("Mfsd_2489hf*__6".equals(req.getParameter("token"))) {
 
 			if (ran.nextBoolean() && ran.nextBoolean() && ran.nextBoolean()) {
+				log.info("Action_1_4 2");
 				xml = getUpdateYourAppXml();
 			} else {
-				xml = Util.getResponseFromWeatherApi(weatherURl + "autoip.xml?geo_ip="+ipAddress);
-				xml = Util.convertApi(xml);
+				log.info("Action_1_4 3");
+				xml = WeatherSingleton.INSTANCE.getByIp(ipAddress);
 			}
 		} else {
+			log.info("Action_1_4 4");
 			xml = getUpdateYourAppXml();
 		}
 		resp.setContentType("text/xml");

@@ -11,17 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 public class Action_1_5 {
-	private static final String weatherURl2 = "http://api2.worldweatheronline.com/free/v2/weather.ashx"
-			+ "?fx=no"
-			+ "&includeLocation=yes"
-			+ "&show_comments=no"
-			+ "&format=xml"
-			+ "&key=ee0c108d51c15e501093ca29f58a32d2116790ab"
-			+ "&q=";
-	
-	private static final String weatherURl = "http://api.wunderground.com/api/5ff47a62760ecb31/conditions/lang:EN/q/";
-	
-	
+
 	static Logger log = Logger.getLogger(Action_1_5.class);
 
 	public static void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -38,21 +28,19 @@ public class Action_1_5 {
 			String lat = req.getParameter("lat");
 			if (lat != null) {
 				String lon = req.getParameter("lon");
-
-				xml = Util.getResponseFromWeatherApi(weatherURl + lat + ","
-						+ lon+".xml");
-				xml = Util.convertApi(xml);
+				log.info("Action_1_5 ");
+				xml = WeatherSingleton.INSTANCE.getByLocation(lat, lon);
 
 			} else if (byName instanceof Inet6Address) {
 
+				log.info("Action_1_5 ");
 				String ipv6Message = "Cannot get your location. try again after activationg gps."
 						+ " Or contact info@haveanapp.com";
 				xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><veleta><error><message>"
 						+ ipv6Message + "</message></error></veleta>";
 			} else {
-
-				xml = Util.getResponseFromWeatherApi(weatherURl + "autoip.xml?geo_ip="+ipAddress);
-				xml = Util.convertApi(xml);
+				log.info("Action_1_4 5");
+				xml = WeatherSingleton.INSTANCE.getByIp(ipAddress);
 			}
 			resp.setContentType("text/xml");
 			

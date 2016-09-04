@@ -68,7 +68,7 @@ public class Util {
 		return response;
 	}
 
-	public static String convertApi(String xml) {
+	public static String convertApi(String xml, String[][] mappings) {
 
 		String template = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><data><current_condition><windspeedKmph>##windspeedKmph</windspeedKmph><windspeedMiles>##windspeedMiles</windspeedMiles><winddirDegree>##winddirDegree</winddirDegree></current_condition>"
 				+ "<nearest_area><areaName>##areaName</areaName><country>##country</country><region>##region</region></nearest_area><provider>##provider</provider></data>";
@@ -102,21 +102,9 @@ public class Util {
 					+ "</message></error></veleta>";
 		}
 
-		String[][] maps = {
-				{ "windspeedKmph", "/response/current_observation/wind_kph" },
-				{ "windspeedMiles", "/response/current_observation/wind_mph" },
-				{ "winddirDegree", "/response/current_observation/wind_degrees" },
-				{ "areaName",
-						"/response/current_observation/observation_location/city" },
-				{ "region",
-						"/response/current_observation/observation_location/state" },
-				{ "country",
-						"/response/current_observation/observation_location/country" },
-
-		};
-		for (int i = 0; i < maps.length; i++) {
-			String tag = maps[i][0];
-			String xpath = maps[i][1];
+		for (int i = 0; i < mappings.length; i++) {
+			String tag = mappings[i][0];
+			String xpath = mappings[i][1];
 
 			String value = getFirstTag(xpath, document, xPath);
 			if (tag.equals("windspeedKmph") || tag.equals("windspeedMiles")
@@ -128,8 +116,8 @@ public class Util {
 
 			template = template.replace("##" + tag, value);
 		}
-		template = template.replace("Rabassa", "A la rica berenjena.., ");
-		template = template.replace("##provider", "wunderground.com");
+		template = template.replace("Rabassa", "Esos torreznos de Almagro ..., ");
+		template = template.replace("##provider", "openweathermap.org");
 
 		return template;
 	}
@@ -141,7 +129,7 @@ public class Util {
 		try {
 			return xPath.evaluate(xpathExpr, document);
 		} catch (XPathExpressionException e) {
-			result = null;
+			result = "";
 		}
 
 		return result;
