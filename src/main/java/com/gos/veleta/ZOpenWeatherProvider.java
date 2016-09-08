@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ZOpenWeatherProvider extends ZBaseWeatherProvider{
-
-	
-	
 	
 	final String [][] mappings = new String[][]{
 		{ "windspeedKmph", "/current/wind/speed/@value" },

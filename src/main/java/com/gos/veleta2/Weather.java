@@ -1,4 +1,4 @@
-package com.gos.veleta;
+package com.gos.veleta2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,16 +7,19 @@ import javax.servlet.ServletException;
 
 import org.apache.log4j.Logger;
 
-public class Weather implements WeatherProvider {
+public enum Weather {
 
+	INST;
+	
 	static Logger log = Logger.getLogger(Weather.class);
 	
 	
-	List<WeatherProvider> providers = new ArrayList<WeatherProvider>();
+	List<IWeatherProvider> providersIp = new ArrayList<IWeatherProvider>();
 	
-	public void addProvider(WeatherProvider p){
-		providers.add(p);
+	private Weather() {
+		this.providers.add(e);
 	}
+
 	
 	public String getByLocation(String lat, String lon) throws ServletException {
 		

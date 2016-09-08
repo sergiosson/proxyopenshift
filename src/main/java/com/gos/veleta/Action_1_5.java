@@ -28,18 +28,18 @@ public class Action_1_5 {
 			String lat = req.getParameter("lat");
 			if (lat != null) {
 				String lon = req.getParameter("lon");
-				log.info("Action_1_5 ");
+				log.info("Action_1_5 loc");
 				xml = WeatherSingleton.INSTANCE.getByLocation(lat, lon);
 
 			} else if (byName instanceof Inet6Address) {
 
-				log.info("Action_1_5 ");
+				log.info("Action_1_5 inet6");
 				String ipv6Message = "Cannot get your location. try again after activationg gps."
 						+ " Or contact info@haveanapp.com";
 				xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><veleta><error><message>"
 						+ ipv6Message + "</message></error></veleta>";
 			} else {
-				log.info("Action_1_4 5");
+				log.info("Action_1_5 ip");
 				xml = WeatherSingleton.INSTANCE.getByIp(ipAddress);
 			}
 			resp.setContentType("text/xml");

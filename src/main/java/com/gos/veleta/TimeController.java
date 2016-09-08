@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.apache.log4j.Logger;
+
 public class TimeController {
+	
+
+	static Logger log = Logger.getLogger(TimeController.class);
+	
 	
 	protected int maxRequests;
 	protected long timePeriod;
@@ -17,9 +23,9 @@ public class TimeController {
 	}
 	
 	List<Long> times = new ArrayList<Long>();
-	static int h = 0;
+	
 	public boolean isAvailable() {
-		if(times.size() > maxRequests) {
+		if(times.size() >= maxRequests) {
 			Set<Long> expired = new HashSet<Long>();
 			
 			for(Long l : times){
@@ -29,7 +35,8 @@ public class TimeController {
 			}
 			times.removeAll(expired);
 		}
-		return times.size() <= maxRequests;
+		log.info("TimeController " + maxRequests+ " " + times.size());
+		return times.size() < maxRequests;
 	}
 
 	public void addRequest(){
