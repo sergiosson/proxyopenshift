@@ -44,8 +44,8 @@ public abstract class ZBaseWeatherProvider implements WeatherProvider {
 	}
 
 	private String getAndConvert(String url) throws ServletException {
-		timer.addRequest();
-		String xml = Util.getResponseFromWeatherApi(url);
+		
+		String xml = Util.getResponseFromWeatherApi(url, timer);
 		if(xml.startsWith("{")){
 			JSONObject json = new JSONObject(xml);
 			xml = XML.toString(json);

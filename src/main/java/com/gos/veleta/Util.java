@@ -40,7 +40,7 @@ public class Util {
 
 	Map<String, String> cacheMap = new HashMap<String, String>();
 
-	public static String getResponseFromWeatherApi(String url)
+	public static String getResponseFromWeatherApi(String url, TimeController timer)
 			throws ServletException {
 
 		String response = Cache.get(url);
@@ -53,6 +53,7 @@ public class Util {
 		RestClient rc = new RestClient(url);
 
 		try {
+			timer.addRequest();
 			rc.executeRequest();
 		} catch (ErrorInfo e) {
 			log.error(e);
@@ -156,5 +157,6 @@ public class Util {
 		log.info("IP is " + ip);
 		return ip;
 	}
+
 
 }
