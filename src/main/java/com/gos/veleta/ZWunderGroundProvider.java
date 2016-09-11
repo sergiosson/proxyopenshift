@@ -20,7 +20,7 @@ public class ZWunderGroundProvider extends ZBaseWeatherProvider {
 			{"provider","/response/current_observation/image/title"}
 	};
 	
-	private List<String> modes = Arrays.asList(new String[]{"location", "ip"});
+	private List<String> modes = Arrays.asList(new String[]{"ip"});
 	
 	
 	public ZWunderGroundProvider() {
